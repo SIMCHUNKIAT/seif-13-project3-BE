@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>
+
+    <div class="container">
+        <h1>Welcome to GottaGo!</h1>
+
+        <ul>
+            <% posts.forEach((post, idx) => { %>
+
+                <li>
+                    <div class="row">
+                        <div class="col-3">
+                            <figure>
+                                <img src="<%= post.image %>" class="img-fluid" />
+                            </figure>
+                        </div>
+                        <div class="col-9">
+                            <h2><a href="/posts/<%= idx %>"><%= post.name %></a></h2>
+                            <p><%= post.description %></p>
+                        </div>
+                    </div>
+                </li>
+
+            <% }) %>
+        </ul>
+    </div>
+
+<%- include('../partials/footer') %>
