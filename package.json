@@ -1,0 +1,33 @@
+{
+  "name": "seif-13-project3-be",
+  "version": "1.0.0",
+  "description": "![image](https://github.com/SIMCHUNKIAT/seif-13-project3-BE/assets/126931095/b5c21e1f-47a8-48ff-bf31-ef547b8b30eb)\r ![image](https://github.com/SIMCHUNKIAT/seif-13-project3-BE/assets/126931095/e197112b-62d5-4723-8937-aac1b2359946)\r ![image](https://github.com/SIMCHUNKIAT/seif-13-project3-BE/assets/126931095/e012052a-23c1-448f-a24b-4ace441cf27f)\r ![image](https://github.com/SIMCHUNKIAT/seif-13-project3-BE/assets/126931095/a6c97ba3-823a-4eb1-a6d8-b83213f6d817)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SIMCHUNKIAT/seif-13-project3-BE.git"
+  },
+  "author": "simchunkiat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SIMCHUNKIAT/seif-13-project3-BE/issues"
+  },
+  "homepage": "https://github.com/SIMCHUNKIAT/seif-13-project3-BE#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cloudinary": "^1.37.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "joi": "^17.9.2",
+    "jsonwebtoken": "^9.0.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^7.3.1",
+    "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0"
+  }
+}
