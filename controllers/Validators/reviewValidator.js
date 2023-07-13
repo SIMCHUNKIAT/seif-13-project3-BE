@@ -6,7 +6,7 @@ const validators = {
         post_id: Joi.string().required(),
         user_id: Joi.string().required(),
         rating: Joi.number().required(),
-        comment: Joi.string().min(3),
+        comments: Joi.string().min(3),
     })
 
 }

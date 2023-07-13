@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+
+    <div class="container">
+        <h1>Contribute a new review</h1>
+        <!-- form will be sent to http://localhost:3000/reviews -->
+        <form action="/reviews" method="post">
+            <div class="mb-3">
+                <label for="review_comment" class="form-label">Review</label>
+                <input type="text" class="form-control" id="review_comment" name="review_comment">
+            </div>
+
+            <div class="mb-3">
+                <label for="rating" class="form-label">Rating</label>
+                <input type="number" min="1" class="form-control" id="rating" name="rating">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+
+    <%- include('../partials/footer') %>

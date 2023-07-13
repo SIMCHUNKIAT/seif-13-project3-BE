@@ -1,0 +1,34 @@
+<%- include('../partials/header') %>
+
+    <div class="container">
+        <aside class="back mb-5">
+            <a href="/">< Back to Index</a>
+        </aside>
+
+        <div class="row">
+            <div class="col-6">
+                <figure>
+                    <img src="<%= posts[index].image %>" class="img-fluid" />
+                </figure>
+            </div>
+            <div class="col-6">
+                <div class="post-details">
+                    <h1><%= posts[index].name %></h1>
+                    <p><%= posts[index].description %></p>
+                </div>
+                <div class="delete-post">
+                    <form action="/posts/<%= posts[index].id %>?_method=delete" method="post">
+                        <input type="submit" value="DELETE" />
+                    </form>
+                </div>
+                <div class="write-review">
+                    <form action="/api/reviews" method="post">
+                        <p>Contribute a Review</p>
+                        <input type="submit" value="Review" /><a href="/reviews"></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include('../partials/footer') %>

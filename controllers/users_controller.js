@@ -44,18 +44,21 @@ const usersController = {
     login: async (req, res) => {
         // get login data from request body
         const data = req.body
-    
-        // validate the data
-        const validationSchema = Joi.object({
-          //  name: Joi.string().min(3).max(100).required(),
-            email: Joi.string().min(3).required(),
-            password: Joi.string().required(),
-        })
 
-        const validationResult = validationSchema.validate(data)
+        // validate the data
+        // const validationSchema = Joi.object({
+        //  name: Joi.string().min(3).max(100).required(),
+        //     email: Joi.string().min(3).required(),
+        //     password: Joi.string().required(),
+        // })
+
+        // const validationResult = validationSchema.validate(data)
+
+        const validationResult = userValidator.loginSchema.validate(data)
+
         if (validationResult.error) {
             res.statusCode = 400
-            
+
             return res.json({
                 msg: validationResult.error.details[0].message
             })
@@ -75,7 +78,7 @@ const usersController = {
             })
         }
 
-        
+
         if (!user) {
             res.statusCode = 401
             return res.json({
@@ -95,10 +98,19 @@ const usersController = {
         // if fail, return status 401 (unauthorised)
         // generate JWT using external library
         const token = JWT.sign({
-            name: user.name,
-            email: user.email,
-        }, process.env.APP_KEY)
-
+                name: user.name,
+                email: user.email,
+            }, 
+            process.env.APP_KEY,
+            {
+                expiresIn: "10 days",
+                audience: "FE",
+                issuer: "BE",
+                subject: user._id.toString(),
+            },
+            
+        )
+        console.log(user._id.toString())
         // return response with JWT
         res.json({
             msg: "login successful",

@@ -9,10 +9,10 @@ const middleware = (req, res, next) => {
     if (!authzHeaderVal) {
         res.statusCode = 401
         return res.json({
-                msg: 'must have authorization in header'
+            msg: 'must have authorization in header'
         })
     }
-        
+
     // - extract JWT token from Authorization key value
 
     const token = authzHeaderVal.substring(7)
@@ -21,7 +21,7 @@ const middleware = (req, res, next) => {
     // - return 401 if verification failed
     try {
         jwt.verify(token, process.env.APP_KEY)
-    } catch(err) {
+    } catch (err) {
         res.statusCode = 401
         return res.json({
             msg: 'failed to verify token'
@@ -29,6 +29,18 @@ const middleware = (req, res, next) => {
     }
 
     // - (Optional) check for token expiry
+    // decode jwt, extract user_id, set it in a globally available var in express
+    const decoded = jwt.decode(token)
+    if (!decoded) {
+        res.statusCode = 401
+        return res.json({
+            msg: "failed to decode token"
+        })
+    }
+
+    // set decoded "sub" field (refers to who the token belongs to) to res.locals
+    res.locals.authUserID = decoded.sub
+
 
     next()
 }
