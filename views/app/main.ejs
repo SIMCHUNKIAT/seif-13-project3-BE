@@ -4,18 +4,18 @@
         <h1>Welcome to GottaGo!</h1>
 
         <ul>
-            <% posts.forEach((post, idx) => { %>
+            <% posts.forEach((posts, id) => { %>
 
                 <li>
                     <div class="row">
                         <div class="col-3">
                             <figure>
-                                <img src="<%= post.image %>" class="img-fluid" />
+                                <img src="<%= posts.image %>" class="img-fluid" />
                             </figure>
                         </div>
                         <div class="col-9">
-                            <h2><a href="/posts/<%= idx %>"><%= post.name %></a></h2>
-                            <p><%= post.description %></p>
+                            <h2><a href="/posts/<%= id %>"><%= posts.name %></a></h2>
+                            <p><%= posts.description %></p>
                         </div>
                     </div>
                 </li>

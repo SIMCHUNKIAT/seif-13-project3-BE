@@ -28,6 +28,8 @@ const reviewControllers = {
         }
 
         // TODO: ensure given user id in req matches user id in token
+        console.log(res.locals.authUserID)
+        console.log(data.user_id)
         if (res.locals.authUserID !== data.user_id) {
             res.statusCode = 401
             return res.json({
@@ -41,7 +43,7 @@ const reviewControllers = {
                 post: data.post_id,
                 reviewer: data.user_id,
                 rating: data.rating,
-                comment: data.comment ?? '',
+                comments: data.comments ?? '',
             })
         } catch(err) {
             res.statusCode = 500

@@ -29,6 +29,12 @@ app.use(cors({
 }))
 
 // For uploading of files into cloudinary
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
@@ -51,12 +57,25 @@ app.post('/api/media/upload', fileParser.single('media_file'), (req, res) => {
 })
 
 // ejs routes
+// main page
 app.get('/', (req, res) => {
     res.render('./app/main', { posts: posts });
 });
 
+// individual posts page
+app.get('/posts/:id', (req, res) => {
+    const id = req.params.id
+    res.render('./app/show', { posts: posts, index: id });
+});
+
+// login page WIP
 app.get('/api/user/login', (req, res) => {
     res.send('login page')
+})
+
+// Creation of NEW review page
+app.get('/reviews', (req, res) => {
+    res.render('.app/newReview')
 })
 
 // API endpoint routes
