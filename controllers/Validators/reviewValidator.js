@@ -1,4 +1,4 @@
-const Joi = require('joi');
+import Joi from "joi"
 
 const validators = {
 
@@ -11,4 +11,4 @@ const validators = {
 
 }
 
-module.exports = validators
+export default validators
