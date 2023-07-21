@@ -10,7 +10,7 @@ const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const posts = require('./models/posts');
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 const userRouter = require('./routers/users_router')
 const postRouter = require('./routers/post_router')
@@ -84,15 +84,15 @@ app.use('/api/post', postRouter)
 app.use('/api/reviews', reviewRouter)
 
 // LISTENER
-mongoose.connect('mongodb://127.0.0.1:27017/myfavapp')
+// mongoose.connect('mongodb://127.0.0.1:27017/myfavapp')
 
-// mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_HOST}/${process.env.MONGO_DB}?retryWrites=true&w=majority`)
+mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_HOST}/${process.env.MONGO_DB}?retryWrites=true&w=majority`)
 .then(() => {
     console.log('DB connected')
 
     // boot up app
-    app.listen(port, () => {
-        console.log('GottaGo BE running on port: ', port);
+    app.listen(process.env.PORT, () => {
+        console.log('GottaGo BE running on port: ', process.env.PORT);
     })
 })
 .catch(err => {

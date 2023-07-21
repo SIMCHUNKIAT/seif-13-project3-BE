@@ -6,8 +6,8 @@ const PostModel = require('../PostModel')
 const postRaw = require('../posts') // -> array of post objects
 
 // make a connection to db
-// mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_HOST}/${process.env.MONGO_DB}?retryWrites=true&w=majority`)
-mongoose.connect('mongodb://127.0.0.1:27017/myfavapp')
+mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_HOST}/${process.env.MONGO_DB}?retryWrites=true&w=majority`)
+// mongoose.connect('mongodb://127.0.0.1:27017/myfavapp')
     .then(async () => {
         console.log('seeding db')
         

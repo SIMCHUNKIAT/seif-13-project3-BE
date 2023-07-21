@@ -20,7 +20,7 @@ const middleware = (req, res, next) => {
     // - Use JWT to verify the token
     // - return 401 if verification failed
     try {
-        jwt.verify(token, process.env.APP_KEY)
+        jwt.verify(token, process.env.JWT_SECRET)
     } catch (err) {
         res.statusCode = 401
         return res.json({

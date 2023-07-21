@@ -98,10 +98,10 @@ const usersController = {
         // if fail, return status 401 (unauthorised)
         // generate JWT using external library
         const token = JWT.sign({
-                name: user.name,
+                name: user.firstName,
                 email: user.email,
             }, 
-            process.env.APP_KEY,
+            process.env.JWT_SECRET,
             {
                 expiresIn: "10 days",
                 audience: "FE",

@@ -1,4 +1,4 @@
-const postModel = require('../models/PostModel')
+const PostModel = require('../models/PostModel')
 
 const PostControllers = {
 
@@ -43,7 +43,7 @@ const PostControllers = {
         // }
 
         // insert to DB using model
-        const result = await postModel.create({
+        const result = await PostModel.create({
             name: data.name,
             description: data.description,
             image: data.image ?? ''
